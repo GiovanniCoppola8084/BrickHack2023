@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="wasm.js"></script>
+        <script src="FrontEndSim.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>RISC-V Simulation</title>
+    </head>
+    <body onload="initSim()">
+        <div id="registerView" class="view">
+            <p id="registerTitle">registers</p>
+            <div id="registers">
+
+            </div>
+        </div>
+        <div id="instructionView" class="view">
+            <p id="instructionTitle">Current Instruction</p>
+            <div id="instructions">
+
+            </div>
+        </div>
+        <div id="bottomHalf" class="wrapper">
+            <div id="memoryView" class="view">
+                <p id="memoryTitle">memory</p>
+                <div id="memory">
+
+                </div>
+            </div>
+            <div id="settingsAndButtons" class="view">
+                <div id="settings">
+                    <label for="fileUpload">Upload .o (or other file types) below:</label>
+                    <input id="fileUpload" type="file" name="fileupload"/>
+                    <br>
+                    <label for="uploadButton">Load your file into RAM:</label>
+                    <button id="uploadButton" onclick="uploadFile(this)"> Upload </button>
+                    <br>
+                    <label for="delayInput">Delay (in milliseconds):</label>
+                    <input type="text" name="delayInput" id="delayInput" onchange="changeDelay()">
+                    <!--<br>
+                    <label for="">RAM Size (in KB):</label>
+                    <input type="text" name="memoryInput" id="memoryInput" onchange="changeMemorySize()">-->
+                </div>
+                <div id="playButtons">
+                    <button id="pauseButton" alt="Button to Halt the Execution of the RISC-V code" onclick="stopInstructions()" class="controlButton"><img src="images/pauseButton.png"></button>
+                    <button id="playButton" alt="Button to Begin the Execution of the RISC-V code" onclick="playInstructions()" class="controlButton"><img src="images/playButton.png"></button>
+                    <button id="forwardButton" alt="Button to Execute the next instruction and halt" onclick="executeOneInstruction()" class="controlButton"><img src="images/fastForwardButton.png"></button>
+                    <button id="fullForwardButton" alt="Button to Execute the next 10 instructions and halt" onclick="executeTenInstructions()" class="controlButton"><img src="images/fullForwardButton.png"></button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
